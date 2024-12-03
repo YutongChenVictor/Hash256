@@ -1,0 +1,51 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-642-g3bdb50da)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00000000011b2510 .scope module, "tb_R" "tb_R" 2 3;
+ .timescale -9 -12;
+v00000000011e1660_0 .var "x", 31 0;
+v00000000011e1700_0 .net "x_out", 31 0, L_00000000011e1840;  1 drivers
+S_00000000011b26a0 .scope module, "R_inst" "R" 2 29, 3 1 0, S_00000000011b2510;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "x";
+    .port_info 1 /OUTPUT 32 "xout";
+P_00000000011b2ee0 .param/l "DATA_WIDTH" 0 3 3, +C4<00000000000000000000000000100000>;
+P_00000000011b2f18 .param/l "n" 0 3 4, +C4<00000000000000000000000000001000>;
+v00000000011b2830_0 .net *"_s2", 23 0, L_00000000011e17a0;  1 drivers
+L_0000000001227c38 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v00000000011b28d0_0 .net *"_s4", 7 0, L_0000000001227c38;  1 drivers
+v00000000011e1520_0 .net "x", 31 0, v00000000011e1660_0;  1 drivers
+v00000000011e15c0_0 .net "xout", 31 0, L_00000000011e1840;  alias, 1 drivers
+L_00000000011e17a0 .part v00000000011e1660_0, 8, 24;
+L_00000000011e1840 .concat [ 24 8 0 0], L_00000000011e17a0, L_0000000001227c38;
+    .scope S_00000000011b2510;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "TB_R.vcd" {0 0 0};
+    %vpi_call 2 12 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000000011b2510 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_00000000011b2510;
+T_1 ;
+    %pushi/vec4 16, 0, 32;
+    %store/vec4 v00000000011e1660_0, 0, 32;
+    %delay 10000, 0;
+    %pushi/vec4 43981, 0, 32;
+    %store/vec4 v00000000011e1660_0, 0, 32;
+    %delay 10000, 0;
+    %pushi/vec4 52496, 0, 32;
+    %store/vec4 v00000000011e1660_0, 0, 32;
+    %delay 10000, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_R.v";
+    "../../R.v";
